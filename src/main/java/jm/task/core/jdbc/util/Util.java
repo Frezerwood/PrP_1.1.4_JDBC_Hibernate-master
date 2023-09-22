@@ -8,6 +8,9 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
@@ -38,5 +41,20 @@ public class Util {
             }
         }
         return sessionFactory;
+    }
+
+    public static Connection getConnection() {
+        // реализуйте настройку соеденения с БД
+        String PASS = "8RCDNjQUwpGg";
+        String USER = "root";
+        String URL = "jdbc:mysql://localhost:3306/kata";
+
+        Connection connection;
+        try {
+            connection = DriverManager.getConnection(URL, USER, PASS);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return connection;
     }
 }
