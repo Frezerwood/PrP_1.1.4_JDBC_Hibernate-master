@@ -29,7 +29,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void dropUsersTable() {
-        String sqlDropUsersTable = "DROP TABLE IF EXISTS user";
+        String sqlDropUsersTable = "DROP TABLE IF EXISTS users";
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
             session.createSQLQuery(sqlDropUsersTable).executeUpdate();

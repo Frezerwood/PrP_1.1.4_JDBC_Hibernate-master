@@ -17,14 +17,15 @@ public class Util {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
-                Properties settings = new Properties();
-                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/kata");
-                settings.put(Environment.USER, "root");
-                settings.put(Environment.PASS, "8RCDNjQUwpGg");
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+                Properties properties = new Properties();
+                properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+                properties.put(Environment.URL, "jdbc:mysql://localhost:3306/kata");
+                properties.put(Environment.USER, "root");
+                properties.put(Environment.PASS, "8RCDNjQUwpGg");
+                properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+                properties.put(Environment.SHOW_SQL, "false");
 
-                configuration.setProperties(settings);
+                configuration.setProperties(properties);
 
                 configuration.addAnnotatedClass(User.class);
 
