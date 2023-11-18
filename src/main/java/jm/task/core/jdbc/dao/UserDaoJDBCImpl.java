@@ -30,9 +30,11 @@ public class UserDaoJDBCImpl implements UserDao {
             connection.setAutoCommit(false);
             preparedStatement.execute();
             connection.commit();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public void dropUsersTable() {
@@ -40,6 +42,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try  {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,6 +58,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setByte(3, age);
             preparedStatement.executeUpdate();
             System.out.println("A user " + name + " has been added to the database.");
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -67,6 +71,7 @@ public class UserDaoJDBCImpl implements UserDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -92,6 +97,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setAge((resultSet.getByte("age")));
                 allUsers.add(user);
                 connection.commit();
+                connection.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -105,10 +111,11 @@ public class UserDaoJDBCImpl implements UserDao {
         try  {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    
+
 }
